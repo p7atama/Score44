@@ -342,6 +342,11 @@ do
     # Jalankan proses instalasi di setiap folder
     chmod +x bootstrap.sh
     ./bootstrap.sh
+    # ==== FIX STARTS HERE ====
+    # Ensure uv is in PATH
+    source ~/.bashrc                  # Load updated PATH
+    export PATH="$HOME/.local/bin:$PATH"  # Explicitly add uv's path
+    # ==== FIX ENDS HERE ====
     uv venv
     source .venv/bin/activate
     uv pip install -e ".[miner]"
